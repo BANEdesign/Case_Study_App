@@ -23,8 +23,7 @@ import java.util.List;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class DealListFragment extends ListFragment implements
-    DealListItemAdapter.OnItemClickListener {
+public class DealListFragment extends ListFragment{
 
     private      OnFragmentInteractionListener mListener;
     private      RetrofitInterface             retrofitInterface;
@@ -55,19 +54,8 @@ public class DealListFragment extends ListFragment implements
     public DealListFragment() {
     }
 
-    @Override
-    public void onItemClick(Deal dealItem) {
-        Fragment fragment = DealDetailFragment.newInstance(dealItem.salePrice, dealItem.price, dealItem.description,
-            dealItem.title, dealItem.image);
-        if (getFragmentManager() != null) {
-            getFragmentManager().beginTransaction()
-                                .add(R.id.container, fragment)
-                                .commitNowAllowingStateLoss();
-        }
-    }
-
     public void setupAdapter() {
-        setListAdapter(new DealListItemAdapter(getActivity(), dealsList, this));
+        setListAdapter(new DealListItemAdapter(getActivity(), dealsList));
     }
 
     public void setupNetwork() {
@@ -117,13 +105,13 @@ public class DealListFragment extends ListFragment implements
         super.onListItemClick(l, v, position, id);
 
         if (null != mListener) {
-            mListener.onFragmentInteraction(DealContent.ITEMS.get(position).id);
+            mListener.onFragmentInteraction(dealsList.get(position));
         }
     }
 
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
-        public void onFragmentInteraction(String id);
+        public void onFragmentInteraction(Deal deal);
     }
 
 }

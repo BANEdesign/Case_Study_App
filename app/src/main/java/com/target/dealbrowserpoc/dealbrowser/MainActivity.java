@@ -2,9 +2,11 @@ package com.target.dealbrowserpoc.dealbrowser;
 
 import android.app.AlertDialog;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import com.target.dealbrowserpoc.dealbrowser.api.Deal;
 
 public class MainActivity extends AppCompatActivity implements DealListFragment.OnFragmentInteractionListener {
 
@@ -44,11 +46,12 @@ public class MainActivity extends AppCompatActivity implements DealListFragment.
     }
 
     @Override
-    public void onFragmentInteraction(String id) {
-        AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
-        alertDialog.setTitle("Product Id");
-        alertDialog.setMessage(id);
-        alertDialog.setCancelable(true);
-        alertDialog.show();
+    public void onFragmentInteraction(Deal dealItem) {
+        Fragment fragment = DealDetailFragment.newInstance(dealItem.salePrice, dealItem.price, dealItem.description,
+            dealItem.title, dealItem.image);
+
+            getSupportFragmentManager().beginTransaction()
+            .add(R.id.container, fragment)
+            .commitNowAllowingStateLoss();
     }
 }

@@ -20,23 +20,16 @@ public class DealListItemAdapter extends BaseAdapter {
     private LayoutInflater inflater;
     private List<Deal>     dealItems;
     private Context        context;
-    private OnItemClickListener listener;
-
-    interface OnItemClickListener {
-        public void onItemClick(Deal dealItem);
+    
+    public static DealListItemAdapter newInstance(Context context, List<Deal> items) {
+        return new DealListItemAdapter(context, items);
     }
 
-
-    public static DealListItemAdapter newInstance(Context context, List<Deal> items, OnItemClickListener listener) {
-        return new DealListItemAdapter(context, items, listener);
-    }
-
-    protected DealListItemAdapter(Context ctx, List<Deal> items, OnItemClickListener listener) {
+    protected DealListItemAdapter(Context ctx, List<Deal> items) {
         super();
         context = ctx;
         inflater = LayoutInflater.from(context);
         dealItems = items;
-        this.listener = listener;
     }
 
     @Override
@@ -106,12 +99,7 @@ public class DealListItemAdapter extends BaseAdapter {
             holder.price.setText(dealItem.price);
         }
         holder.aisleNumber.setText(dealItem.aisle.toUpperCase());
-        view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                listener.onItemClick(dealItem);
-            }
-        });
+
         return view;
     }
 
