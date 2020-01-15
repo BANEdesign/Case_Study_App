@@ -30,6 +30,15 @@ public class MainActivity extends AppCompatActivity implements DealListFragment.
     }
 
     @Override
+    public void onBackPressed() {
+        if (getSupportFragmentManager().getBackStackEntryCount() == 1) {
+            finish();
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         //Don't create the menu for now
         return false;
