@@ -1,6 +1,5 @@
 package com.target.dealbrowserpoc.dealbrowser;
 
-import android.app.AlertDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
@@ -15,17 +14,19 @@ public class MainActivity extends AppCompatActivity implements DealListFragment.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction()
-                                       .add(R.id.container, DealListFragment.newInstance())
-                                       .commit();
+            loadFragment(DealListFragment.newInstance());
         }
     }
 
-    @Override
-    public void onBackPressed() {
-        getSupportFragmentManager().beginTransaction()
-                                   .replace(R.id.container, DealListFragment.newInstance())
-                                   .commitNowAllowingStateLoss();
+    private void loadFragment(Fragment fragment) {
+        try {
+            getSupportFragmentManager().beginTransaction()
+                                       .addToBackStack(null)
+                                       .replace(R.id.container, fragment)
+                                       .commit();
+        } catch (Exception e ) {
+
+        }
     }
 
     @Override
@@ -49,9 +50,6 @@ public class MainActivity extends AppCompatActivity implements DealListFragment.
     public void onFragmentInteraction(Deal dealItem) {
         Fragment fragment = DealDetailFragment.newInstance(dealItem.salePrice, dealItem.price, dealItem.description,
             dealItem.title, dealItem.image);
-
-            getSupportFragmentManager().beginTransaction()
-            .add(R.id.container, fragment)
-            .commitNowAllowingStateLoss();
+        loadFragment(fragment);
     }
 }

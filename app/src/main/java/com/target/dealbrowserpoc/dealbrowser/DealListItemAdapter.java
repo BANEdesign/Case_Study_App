@@ -20,7 +20,7 @@ public class DealListItemAdapter extends BaseAdapter {
     private LayoutInflater inflater;
     private List<Deal>     dealItems;
     private Context        context;
-    
+
     public static DealListItemAdapter newInstance(Context context, List<Deal> items) {
         return new DealListItemAdapter(context, items);
     }
