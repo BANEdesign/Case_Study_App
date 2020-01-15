@@ -42,7 +42,6 @@ public class DealListFragment extends ListFragment implements
             ) {
             if (dealsResponse != null) {
                 dealsList = dealsResponse.data;
-                Toast.makeText(getContext(), "Deals List Retrieved Successfully", Toast.LENGTH_SHORT).show();
                 setupAdapter();
             } else {
                 new AlertDialog.Builder(getContext())
@@ -62,9 +61,9 @@ public class DealListFragment extends ListFragment implements
         Fragment fragment = DealDetailFragment.newInstance(dealItem.salePrice, dealItem.price, dealItem.description,
             dealItem.title, dealItem.image);
         if (getFragmentManager() != null) {
-          getFragmentManager().beginTransaction()
-                              .replace(R.id.container, fragment)
-                              .commitNowAllowingStateLoss();
+            getFragmentManager().beginTransaction()
+                                .add(R.id.container, fragment)
+                                .commitNowAllowingStateLoss();
         }
     }
 

@@ -14,9 +14,16 @@ public class MainActivity extends AppCompatActivity implements DealListFragment.
         setContentView(R.layout.activity_main);
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.container, DealListFragment.newInstance())
-                    .commit();
+                                       .add(R.id.container, DealListFragment.newInstance())
+                                       .commit();
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        getSupportFragmentManager().beginTransaction()
+                                   .replace(R.id.container, DealListFragment.newInstance())
+                                   .commitNowAllowingStateLoss();
     }
 
     @Override
