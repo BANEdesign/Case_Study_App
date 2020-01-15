@@ -44,12 +44,22 @@ public class DealDetailFragment extends Fragment {
     super.onCreate(savedInstanceState);
     for (String key : bundleKeys) {
       if (getArguments() != null && getArguments().containsKey(key)) {
-        //for (String i : bundleStrings) {
-        //  i = getArguments().getString(key);
-        //}
         switch (key) {
           case SALE_PRICE:
-
+            salePrice = getArguments().getString(key);
+            break;
+          case REG_PRICE:
+            regPrice = getArguments().getString(key);
+            break;
+          case DESC:
+            description = getArguments().getString(key);
+            break;
+          case TITLE:
+            title = getArguments().getString(key);
+            break;
+          case IMAGE:
+            imageUrl = getArguments().getString(key);
+            break;
         }
       }
     }
@@ -80,7 +90,7 @@ public class DealDetailFragment extends Fragment {
     salePriceTextView.setText(salePrice);
     regPriceTextView.setText(regPrice);
     titleTextView.setText(title);
-    descTextView.setText(title);
+    descTextView.setText(description);
 
     if (imageUrl != null && !imageUrl.isEmpty()) {
       Picasso.with(getContext())
