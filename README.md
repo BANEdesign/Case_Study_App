@@ -1,5 +1,10 @@
 # Case Study App
 
+<p align="center">
+<img src="https://github.com/BANEdesign/Case_Study_App/blob/master/app/screenshots/Screenshot_1579119599.png" alt="Drawing" width="200" height="400"/>
+
+<img src="https://github.com/BANEdesign/Case_Study_App/blob/master/app/screenshots/Screenshot_1579119740.png" alt="Drawing" width="200" height="400"/>
+</p>  
 
 
 ### Architecture Components
