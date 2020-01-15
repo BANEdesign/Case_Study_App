@@ -12,7 +12,6 @@ import android.support.v4.app.ListFragment;
 import android.view.View;
 import android.widget.ListView;
 
-import android.widget.Toast;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;

@@ -80,7 +80,6 @@ public class DealListItemAdapter extends BaseAdapter {
 
         if (dealItem.image != null && !dealItem.image.isEmpty()){
             holder.loader.setVisibility(View.VISIBLE);
-            //holder.imageView.setVisibility(View.VISIBLE);
             final ProgressBar progressView = holder.loader;
             Picasso.with(context)
                    .load(dealItem.image)

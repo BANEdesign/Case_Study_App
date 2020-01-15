@@ -8,7 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
 /**
@@ -86,6 +88,7 @@ public class DealDetailFragment extends Fragment {
     TextView  titleTextView = (TextView) view.findViewById(R.id.detailViewTitle);
     TextView  descTextView = (TextView) view.findViewById(R.id.detailViewDescription);
     ImageView productImage = (ImageView) view.findViewById(R.id.detailImageView);
+    ProgressBar progressBar = (ProgressBar) view.findViewById(R.id.progressBar);
 
     salePriceTextView.setText(salePrice);
     regPriceTextView.setText(regPrice);
@@ -93,10 +96,21 @@ public class DealDetailFragment extends Fragment {
     descTextView.setText(description);
 
     if (imageUrl != null && !imageUrl.isEmpty()) {
+      progressBar.setVisibility(View.VISIBLE);
       Picasso.with(getContext())
              .load(imageUrl)
              .fit()
-             .into(productImage);
+             .into(productImage, new Callback() {
+               @Override
+               public void onSuccess() {
+                 progressBar.setVisibility(View.GONE);
+               }
+
+               @Override
+               public void onError() {
+                  // Do nothing
+               }
+             });
     }
   }
 }
