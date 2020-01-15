@@ -6,27 +6,37 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.content.Context;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import android.widget.Toast;
+import com.squareup.picasso.Callback;
+import com.squareup.picasso.Picasso;
+import com.target.dealbrowserpoc.dealbrowser.api.Deal;
 import java.util.List;
 
-import com.target.dealbrowserpoc.dealbrowser.deals.DealItem;
 
 public class DealListItemAdapter extends BaseAdapter {
     private LayoutInflater inflater;
-    private List<DealItem> dealItems;
-    private Context context;
+    private List<Deal>     dealItems;
+    private Context        context;
+    private OnItemClickListener listener;
 
-
-    public static DealListItemAdapter newInstance(Context context, List<DealItem> items) {
-        return new DealListItemAdapter(context, items);
+    interface OnItemClickListener {
+        public void onItemClick(Deal dealItem);
     }
 
-    protected DealListItemAdapter(Context ctx, List<DealItem> items) {
+
+    public static DealListItemAdapter newInstance(Context context, List<Deal> items, OnItemClickListener listener) {
+        return new DealListItemAdapter(context, items, listener);
+    }
+
+    protected DealListItemAdapter(Context ctx, List<Deal> items, OnItemClickListener listener) {
         super();
         context = ctx;
         inflater = LayoutInflater.from(context);
         dealItems = items;
+        this.listener = listener;
     }
 
     @Override
@@ -53,27 +63,63 @@ public class DealListItemAdapter extends BaseAdapter {
         View view;
         ViewHolder holder;
         if(convertView == null) {
-            view = inflater.inflate(R.layout.deal_list_item, parent, false);
+            view = inflater.inflate(R.layout.deal_list_item_v2, parent, false);
             holder = new ViewHolder();
             holder.productImage = (ImageView)view.findViewById(R.id.deal_list_item_image_view);
             holder.title = (TextView)view.findViewById(R.id.deal_list_item_title);
             holder.price = (TextView)view.findViewById(R.id.deal_list_item_price);
+            holder.loader = (ProgressBar)view.findViewById(R.id.progress_bar);
+            holder.aisleNumber = (TextView)view.findViewById(R.id.deals_list_isle_number);
             view.setTag(holder);
         } else {
             view = convertView;
             holder = (ViewHolder)view.getTag();
         }
 
-        DealItem dealItem = dealItems.get(position);
-        holder.productImage.setImageBitmap(dealItem.getProductImage(context));
-        holder.title.setText(dealItem.title);
-        holder.price.setText(dealItem.salePrice);
+        Deal dealItem = dealItems.get(position);
 
+        if (dealItem.image != null && !dealItem.image.isEmpty()){
+            holder.loader.setVisibility(View.VISIBLE);
+            //holder.imageView.setVisibility(View.VISIBLE);
+            final ProgressBar progressView = holder.loader;
+            Picasso.with(context)
+                   .load(dealItem.image)
+                   .fit()
+                   .into(holder.productImage, new Callback() {
+                       @Override
+                       public void onSuccess() {
+                           progressView.setVisibility(View.GONE);
+                       }
+
+                       @Override
+                       public void onError() {
+                           // Do nothing
+                       }
+                   });
+        } else {
+            Toast.makeText(context, "The Image Done Goofed", Toast.LENGTH_SHORT).show();
+        }
+
+        holder.title.setText(dealItem.title);
+        if (dealItem.salePrice != null && !dealItem.salePrice.isEmpty()) {
+            holder.price.setText(dealItem.salePrice);
+        } else {
+            holder.price.setText(dealItem.price);
+        }
+        holder.aisleNumber.setText(dealItem.aisle.toUpperCase());
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                listener.onItemClick(dealItem);
+            }
+        });
         return view;
     }
 
     private class ViewHolder {
         public ImageView productImage;
         public TextView title, price;
+        public ProgressBar loader;
+        public TextView aisleNumber;
     }
 }

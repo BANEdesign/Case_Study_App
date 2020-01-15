@@ -1,9 +1,13 @@
-<resources>
-    <style name="AppTheme" parent="@android:style/Theme.Holo.Light.DarkActionBar">
-        <item name="android:actionBarStyle">@style/TargetActionBar</item>
-    </style>
-    <style name="TargetActionBar"
-        parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
-        <item name="android:background">@drawable/actionbar_color</item>
+<resources xmlns:tools="http://schemas.android.com/tools" xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <style name="dealsListIsleIcon">
+        <item name="android:paddingTop">@dimen/aisle_top_margin</item>
+        <item name="android:paddingStart">@dimen/aisle_top_margin</item>
+        <item name="android:paddingEnd">@dimen/margin_smol</item>
+        <item name="android:background">@drawable/circle_border_grey</item>
+        <item name="android:textColor">@drawable/actionbar_color</item>
+        <item name="android:textSize">@dimen/font_size_smoller</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textStyle">bold</item>
     </style>
 </resources>

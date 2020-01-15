@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+  <ImageView
+      android:id="@+id/detailImageView"
+      android:layout_width="match_parent"
+      android:layout_height="@dimen/detail_imageview_height"
+      android:layout_marginBottom="@dimen/margin_smol"
+      app:layout_constraintBottom_toTopOf="@+id/detailViewSalePrice"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      />
+
+  <TextView
+      android:id="@+id/detailViewRegularPrice"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_margin="@dimen/margin_smol"
+      android:textColor="@drawable/font_gray"
+      android:textSize="@dimen/font_size_large"
+      app:layout_constraintBottom_toTopOf="@+id/detailViewTitle"
+      app:layout_constraintEnd_toEndOf="parent"
+      tools:text="$17.99"
+      />
+
+  <TextView
+      android:id="@+id/detailViewSalePrice"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_margin="@dimen/margin_smol"
+      android:textColor="@drawable/actionbar_color"
+      android:textSize="@dimen/font_size_large"
+
+      app:layout_constraintBottom_toTopOf="@+id/detailViewTitle"
+      app:layout_constraintStart_toStartOf="parent"
+      tools:text="$8.98"
+      />
+
+  <TextView
+      android:id="@+id/detailViewTitle"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_margin="@dimen/margin_smol"
+      android:textSize="@dimen/font_size_title"
+      app:layout_constraintBottom_toTopOf="@+id/detailViewDescription"
+      tools:text="non mollit veniam ex"
+      />
+
+  <TextView
+      android:id="@+id/detailViewDescription"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_margin="@dimen/margin_smol"
+      android:maxLines="6"
+      android:textSize="@dimen/font_size_smoller"
+      app:layout_constraintBottom_toTopOf="@+id/detailAddToListButton"
+      tools:text="minim ad et minim ipsum duis irure pariatur deserunt eu cillum anim ipsum velit tempor eu pariatur sunt mollit tempor ut tempor exercitation occaecat ad et veniam et excepteur velit esse eu et ut ipsum consectetur aliquip do quis voluptate cupidatat eu ut consequat adipisicing occaecat adipisicing proident laborum laboris deserunt in laborum est anim ad non"
+      />
+
+  <Button
+      android:id="@+id/detailAddToListButton"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:background="@drawable/square_button_grey"
+      android:text="@string/add_to_list"
+      android:textAllCaps="false"
+      android:textSize="@dimen/font_size_smol"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      />
+
+  <Button
+      android:id="@+id/detailAddToCartButton"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:background="@drawable/square_button_red"
+      android:text="@string/add_to_cart"
+      android:textAllCaps="false"
+      android:textSize="@dimen/font_size_smol"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      />
+
+
+</android.support.constraint.ConstraintLayout>

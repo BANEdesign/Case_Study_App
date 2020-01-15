@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/deal_list_item"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/deal_list_item_height"
+    android:background="@drawable/white_color"
+    android:orientation="vertical"
+    >
+
+  <ImageView
+      android:id="@+id/deal_list_item_image_view"
+      android:layout_width="@dimen/deal_list_item_image_size"
+      android:layout_height="@dimen/deal_list_item_image_size"
+      android:layout_marginStart="@dimen/activity_vertical_margin"
+      android:contentDescription="@string/product_image_content_description"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      />
+
+  <ProgressBar
+      android:id="@+id/progress_bar"
+      android:layout_width="@dimen/deal_list_item_image_size"
+      android:layout_height="@dimen/circle_border_size"
+      android:layout_marginStart="@dimen/activity_horizontal_margin"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      android:visibility="gone"
+      />
+
+  <TextView
+      android:id="@+id/deal_list_item_title"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="@dimen/margin_divider_start"
+      android:layout_marginTop="@dimen/activity_horizontal_margin"
+      android:layout_marginEnd="@dimen/margin_smol"
+      android:layout_marginBottom="@dimen/margin_smol"
+      android:textSize="@dimen/font_size_title"
+      android:maxLines="1"
+      android:textColor="@drawable/font_gray"
+      app:layout_constraintStart_toEndOf="@+id/deal_list_item_image_view"
+      app:layout_constraintTop_toTopOf="parent"
+      tools:text="Title"
+      />
+
+  <View
+      android:id="@+id/view"
+      android:layout_width="match_parent"
+      android:layout_height="1dp"
+      android:layout_marginStart="@dimen/margin_divider_start"
+      android:layout_marginTop="@dimen/margin_extra_smol"
+      android:background="@drawable/font_gray"
+      app:layout_constraintTop_toBottomOf="@id/deal_list_item_title"
+      tools:layout_editor_absoluteX="116dp"
+      />
+
+  <TextView
+      android:id="@+id/deal_list_item_price"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="@dimen/activity_horizontal_margin"
+      android:layout_marginTop="@dimen/margin_large"
+      android:textSize="@dimen/font_size_title"
+      android:textColor="@drawable/font_gray"
+      app:layout_constraintStart_toEndOf="@+id/deal_list_item_image_view"
+      app:layout_constraintTop_toBottomOf="@+id/deal_list_item_title"
+      tools:text="$15.00"
+      />
+
+  <TextView
+      android:id="@+id/item_ship_button"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginEnd="8dp"
+      android:text="@string/button_ship"
+      android:textColor="@android:color/black"
+      android:textSize="@dimen/font_size_smol"
+      app:layout_constraintBottom_toBottomOf="@+id/textView"
+      app:layout_constraintEnd_toStartOf="@+id/textView"
+      app:layout_constraintTop_toTopOf="@+id/textView"
+      />
+
+  <TextView
+      android:id="@+id/textView"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginEnd="8dp"
+      android:text="@string/or"
+      android:textSize="@dimen/font_size_smol"
+      android:textColor="@android:color/darker_gray"
+      app:layout_constraintBottom_toBottomOf="@+id/deals_list_isle_number"
+      app:layout_constraintEnd_toStartOf="@+id/deals_list_isle_number"
+      app:layout_constraintTop_toTopOf="@+id/deals_list_isle_number"
+      />
+
+  <TextView
+      android:id="@+id/deals_list_isle_number"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginEnd="8dp"
+      android:layout_marginTop="@dimen/margin_extra_smol"
+      android:text="B2"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/view"
+      style="@style/dealsListIsleIcon"
+      />
+
+</android.support.constraint.ConstraintLayout>

@@ -1,6 +1,22 @@
 <resources>
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="margin_extra_smol">6dp</dimen>
+    <dimen name="margin_smol">8dp</dimen>
+    <dimen name="aisle_top_margin">10dp</dimen>
+    <dimen name="aisle_start_margin">12dp</dimen>
+    <dimen name="margin_large">20dp</dimen>
+    <dimen name="margin_divider_start">114dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="deal_list_item_image_size">80dp</dimen>
+    <dimen name="deal_list_item_height">140dp</dimen>
+    <dimen name="circle_border_size">48dp</dimen>
+    <dimen name="circle_border_thickness">3dp</dimen>
+    <dimen name="detail_imageview_height">420dp</dimen>
+
+    <dimen name="font_size_title">28sp</dimen>
+    <dimen name="font_size_large">32sp</dimen>
+    <dimen name="font_size_smoller">18sp</dimen>
+    <dimen name="font_size_smol">24sp</dimen>
+
 </resources>
